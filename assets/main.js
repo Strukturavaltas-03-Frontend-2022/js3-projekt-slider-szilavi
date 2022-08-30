@@ -10,11 +10,11 @@ let i = 0;
 
 let createdImg = `<img class= "actualImg" src="./assets/${images[i].source}" alt="picture"></img>`;
 
-let createdDiv = document.createElement('div');
+let createdDivToImg = document.createElement('div');
 
-imgPlace.appendChild(createdDiv);
+imgPlace.appendChild(createdDivToImg);
 
-createdDiv.innerHTML = createdImg;
+createdDivToImg.innerHTML = createdImg;
 
 let actualImg = document.querySelector(".actualImg");
 
@@ -27,7 +27,8 @@ function nextPage() {
           i = 0;
       } else i++;
 
-     actualImg.setAttribute("src", `./assets/${images[i].source}`) 
+     actualImg.setAttribute("src", `./assets/${images[i].source}`)
+     updateAll()
 }
 
 previousPicture.addEventListener('click', prevPage);
@@ -37,5 +38,11 @@ function prevPage() {
           i = 3;
       } else i--;
 
-     actualImg.setAttribute("src", `./assets/${images[i].source}`) 
+     actualImg.setAttribute("src", `./assets/${images[i].source}`)
+     updateAll()
+};
+
+function updateAll() {
+    counter.innerHTML = `${i+1} / ${images.length}`
+    caption.innerHTML = `${images[i].caption}`
 }
